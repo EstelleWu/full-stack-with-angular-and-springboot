@@ -28,6 +28,8 @@ export class LoginComponent implements OnInit {
       // redirect to welcome page
       this.router.navigate(['welcome', this.username]);
       this.invalidLogin = false;
+    }else{
+      this.invalidLogin = true;
     }
   }
 }

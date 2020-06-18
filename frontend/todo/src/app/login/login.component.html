@@ -1,13 +1,13 @@
 <!-- angular attribute -->
-<small *ngIf = 'invalidLogin'> Invalid Credential</small>
+<small *ngIf = 'invalidLogin'> {{errorMessage}}</small>
 
 <div>
-<!-- data binding
-    [(ngModel)]="username", take the input otherwise default model
-    value = "{{password}}", would take the default value-->
-User Name : <input type="text" name="username" [(ngModel)]="username">
-Password: <input type = "password" name = "password" [(ngModel)]="password">
+    <!-- data binding
+        directive: [(ngModel)]="username", take the input otherwise default model
+        value = "{{password}}", would take the default value-->
+    User Name : <input type="text" name="username" [(ngModel)]="username">
+    Password: <input type = "password" name = "password" [(ngModel)]="password">
 
-<!-- event binding -->
-<button (click) = handleLogin()>Login</button>
+    <!-- event binding -->
+    <button (click) = handleLogin()>Login</button>
 </div>
