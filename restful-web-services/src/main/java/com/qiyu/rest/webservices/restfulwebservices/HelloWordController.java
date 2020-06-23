@@ -1,5 +1,6 @@
 package com.qiyu.rest.webservices.restfulwebservices;
 
+import org.springframework.web.bind.annotation.CrossOrigin;
 import org.springframework.web.bind.annotation.GetMapping;
 import org.springframework.web.bind.annotation.PathVariable;
 import org.springframework.web.bind.annotation.RequestMapping;
@@ -7,6 +8,7 @@ import org.springframework.web.bind.annotation.RequestMethod;
 import org.springframework.web.bind.annotation.RestController;
 
 // Controller
+@CrossOrigin(origins="http://localhost:4200")
 @RestController
 public class HelloWordController {
 	//GET
@@ -20,7 +22,8 @@ public class HelloWordController {
 	//hello-world-bean
 	@GetMapping(path = "/hello-world-bean")
 	public HelloWorldBean helloWorldBean() {
-		return new HelloWorldBean("Hello World");
+	    return new HelloWorldBean("Hello World 1");
+		// throw new RuntimeException("some error happened");
 	}
 	
 	@GetMapping(path = "/hello-world/path-variable/{name}")
