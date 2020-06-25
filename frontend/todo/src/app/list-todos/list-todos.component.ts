@@ -17,6 +17,10 @@ export class Todo {
   templateUrl: './list-todos.component.html',
   styleUrls: ['./list-todos.component.css']
 })
+
+/*
+this is the ui part, it collaborate with todo-data service
+*/ 
 export class ListTodosComponent implements OnInit {
   todos: Todo[]
   // [
@@ -25,17 +29,35 @@ export class ListTodosComponent implements OnInit {
   //   new Todo(3, 'Visit Dongshan Road', false, new Date()),
   // ]
 
+  message: string
+
+
   constructor(
     private todoService: TodoDataService
   ) { }
 
-  ngOnInit(): void {
+  refreshTodos(){
     this.todoService.retrieveAllTodos('qiugaoqishuang').subscribe(
       response => {
         console.log(response);
         this.todos = response;
       }
     );
+  }
+
+  ngOnInit(): void {
+    this.refreshTodos();
+  }
+
+  deleteTodo(id){
+    console.log(`delete todo ${id}`)
+    this.todoService.deleteTodo('qiugaoqishuang', id).subscribe(
+      response => {
+        console.log(response);
+        this.message = `Delete of Todo ${id} Successful!`;
+        this.refreshTodos();
+      }
+    )
   }
 
 }
